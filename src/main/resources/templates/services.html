@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+
+    <title>Home</title>
+
+	<link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/primary.css}" rel="stylesheet" type="text/css" />
+	<!-- Bootstrap core JavaScript -->
+    <script th:src="@{/jquery/jquery.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/api/company-access.js}"></script>
+    <script th:src="@{/js/api/employee-access.js}"></script>
+    <script th:src="@{/js/services.js}"></script>
+    
+  </head>
+
+  <body>
+
+	<!-- The navbar section gets replaced with th:replace if template resolved by Spring -->
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:replace="fragments/navbar :: navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">Simple Rest</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Services
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header - set the background image for the header in the line below -->
+    <header class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1076');">
+      	<span class="d-block text-center text-white font-weight-bold">Services</span>
+    </header>
+
+    <!-- Content section -->
+    <section class="py-5">
+      <div class="container">
+        <h1>Company</h1>
+        <p class="lead">Company Form</p>
+        <p>Select existing company or create a new one.</p>
+        <select id="companySelector">
+          <option value="-1">Select Company</option>
+          <option value="0">New Company</option>
+        </select>
+        <input id="companiesBaseUri" type="hidden" th:value="@{/api/companies}" />
+        <form id="companyForm">
+          <label>Company Name</label>
+          <input id="companyName" name="name" type="text" disabled="disabled"></input>
+          <br/>
+          <label>Company Category</label>
+          <input id="companyCategory" name="category" type="text" disabled="disabled"></input>
+          <br/>
+          <input id="createCompanyButton" type="submit" value="Create Company" style="display: none;"/>&nbsp;
+        </form>
+      </div>
+      <div class="container">
+        <h1>Employees</h1>
+        <p class="lead">Employee Form</p>
+        <p>List of active employees for company:</p>
+        <ul id="employeeList">
+          <li>hello</li>
+        </ul>
+        <input id="employeesBaseUri" type="hidden" th:value="@{/api/employees}" />
+        <form id="employeeForm">
+          <label>First Name</label>
+          <input id="employeeFirstName" name="firstName" type="text" disabled="disabled"></input>
+          <br/>
+          <label>Last Name</label>
+          <input id="employeeLastName" name="lastName" type="text" disabled="disabled"></input>
+          <br/>
+          <input id="createEmployeeButton" type="submit" value="Add New Employee to Company" style="display: none;"/>&nbsp;
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+  </body>
+
+</html>
